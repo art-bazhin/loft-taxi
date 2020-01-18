@@ -1,0 +1,11 @@
+.Button {
+  background: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background: #eee;
+}

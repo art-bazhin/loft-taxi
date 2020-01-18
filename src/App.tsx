@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Header } from './components/Header';
+import { LoginPage } from './pages/LoginPage';
+import { IPageId } from './types';
+import { MapPage } from './pages/MapPage';
+import { ProfilePage } from './pages/ProfilePage';
 
 const App: React.FC = () => {
-  return <div>Hello World!</div>;
+  const [pageId, setPageId] = useState<IPageId>('login');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setPageId('map');
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setPageId('login');
+  };
+
+  const PAGES: { [id in IPageId]: JSX.Element } = {
+    map: <MapPage />,
+    login: <LoginPage onLogin={handleLogin} />,
+    profile: <ProfilePage />
+  };
+
+  return (
+    <>
+      <Header
+        isLoggedIn={isLoggedIn}
+        onLogout={handleLogout}
+        onPageChange={pageId => setPageId(pageId)}
+      />
+      <div style={{ padding: '15px' }}>{PAGES[pageId]}</div>
+    </>
+  );
 };
 
 export default App;
