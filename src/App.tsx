@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { LoginPage } from './pages/LoginPage';
+import { Header } from './components/Header/Header';
+import { LoginPage } from './pages/LoginPage/LoginPage';
 import { IPageId } from './types';
-import { MapPage } from './pages/MapPage';
-import { ProfilePage } from './pages/ProfilePage';
+import { MapPage } from './pages/MapPage/MapPage';
+import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 
 const App: React.FC = () => {
   const [pageId, setPageId] = useState<IPageId>('login');

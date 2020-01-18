@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from '../ui/NavLink';
-import { IPageId } from '../types';
+import { NavLink } from '../../ui/NavLink/NavLink';
+import { IPageId } from '../../types';
 
 interface NavProps {
   onPageChange: (pageId: IPageId) => void;

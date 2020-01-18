@@ -1,13 +1,13 @@
-.LoginPage__fields {
+.LoginForm__fields {
   display: flex;
   margin-bottom: 12px;
 }
 
-.LoginPage__fields > * + * {
+.LoginForm__fields > * + * {
   margin-left: 8px;
 }
 
-.LoginPage__error {
+.LoginForm__error {
   color: red;
   margin-bottom: 12px;
 }

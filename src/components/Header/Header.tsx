@@ -1,8 +1,8 @@
 import React from 'react';
-import { Nav } from './Nav';
+import { Nav } from '../Nav/Nav';
 
 import './Header.css';
-import { IPageId } from '../types';
+import { IPageId } from '../../types';
 
 interface HeaderProps {
   onPageChange: (pageId: IPageId) => void;
