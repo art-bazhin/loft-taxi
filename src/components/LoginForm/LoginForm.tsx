@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-
-import './LoginForm.css';
-import { Button } from '../../ui/Button/Button';
-import { Input } from '../../ui/Input/Input';
+import { Button, TextField } from '@material-ui/core';
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -21,17 +18,17 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   return (
     <div className="LoginForm">
       <div className="LoginForm__fields">
-        <Input
+        <TextField
           label="Email"
           type="email"
           name="email"
-          onInput={str => setEmail(str)}
+          onInput={(e: any) => setEmail(e.target.value)}
         />
-        <Input
+        <TextField
           label="Пароль"
           type="password"
           name="password"
-          onInput={str => setPassword(str)}
+          onInput={(e: any) => setPassword(e.target.value)}
         />
       </div>
       {error && <div className="LoginForm__error">Неверный пароль</div>}

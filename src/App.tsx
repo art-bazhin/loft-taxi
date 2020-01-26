@@ -4,6 +4,7 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 import { IPageId } from './types';
 import { MapPage } from './pages/MapPage/MapPage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const App: React.FC = () => {
   const [pageId, setPageId] = useState<IPageId>('login');
@@ -27,6 +28,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      <CssBaseline />
       <Header
         isLoggedIn={isLoggedIn}
         onLogout={handleLogout}
