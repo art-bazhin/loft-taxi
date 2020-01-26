@@ -1,27 +1,20 @@
-import React from 'react';
-import { NavLink } from '../../ui/NavLink/NavLink';
-import { IPageId } from '../../types';
+import React, { useContext } from 'react';
+import { PageId } from '../../types';
+import { AuthContext } from '../../contexts/Auth';
+import { Button } from '@material-ui/core';
 
 interface NavProps {
-  onPageChange: (pageId: IPageId) => void;
-  onLogout: () => void;
-  isLoggedIn: boolean;
+  onPageChange: (pageId: PageId) => void;
 }
 
-export const Nav: React.FC<NavProps> = ({
-  isLoggedIn,
-  onPageChange,
-  onLogout
-}) => {
+export const Nav = ({ onPageChange }: NavProps) => {
+  const { logout } = useContext(AuthContext);
+
   return (
-    <nav className="nav">
-      {isLoggedIn ? (
-        <>
-          <NavLink text="Карта" onClick={() => onPageChange('map')} />
-          <NavLink text="Профиль" onClick={() => onPageChange('profile')} />
-          <NavLink text="Выход" onClick={() => onLogout()} />
-        </>
-      ) : null}
+    <nav>
+      <Button onClick={() => onPageChange('map')}>Карта</Button>
+      <Button onClick={() => onPageChange('profile')}>Профиль</Button>
+      <Button onClick={logout}>Выход</Button>
     </nav>
   );
 };

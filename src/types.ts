@@ -1,1 +1,1 @@
-export type IPageId = 'map' | 'profile' | 'login';
+export type PageId = 'map' | 'profile';

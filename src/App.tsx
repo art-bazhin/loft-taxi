@@ -1,42 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Header } from './components/Header/Header';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-import { IPageId } from './types';
+import { PageId } from './types';
 import { MapPage } from './pages/MapPage/MapPage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { withAuth, AuthContext } from './contexts/Auth';
 
-const App: React.FC = () => {
-  const [pageId, setPageId] = useState<IPageId>('login');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const App = withAuth(() => {
+  const [pageId, setPageId] = useState<PageId>('map');
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    setPageId('map');
-  };
+  const { isLoggedIn } = useContext(AuthContext);
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setPageId('login');
-  };
-
-  const PAGES: { [id in IPageId]: JSX.Element } = {
+  const PAGES: { [id in PageId]: JSX.Element } = {
     map: <MapPage />,
-    login: <LoginPage onLogin={handleLogin} />,
     profile: <ProfilePage />
+  };
+
+  const getCurrentPage = (pageId: PageId) => {
+    if (!isLoggedIn) return <LoginPage />;
+    return PAGES[pageId];
   };
 
   return (
     <>
       <CssBaseline />
-      <Header
-        isLoggedIn={isLoggedIn}
-        onLogout={handleLogout}
-        onPageChange={pageId => setPageId(pageId)}
-      />
-      <div style={{ padding: '15px' }}>{PAGES[pageId]}</div>
+      {isLoggedIn && <Header onPageChange={pageId => setPageId(pageId)} />}
+      <div style={{ paddingTop: isLoggedIn ? '64px' : '0' }}>
+        {getCurrentPage(pageId)}
+      </div>
     </>
   );
-};
+});
 
 export default App;

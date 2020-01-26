@@ -1,28 +1,23 @@
 import React from 'react';
 import { Nav } from '../Nav/Nav';
-
-import './Header.css';
-import { IPageId } from '../../types';
+import { PageId } from '../../types';
+import { Toolbar, AppBar, Grid } from '@material-ui/core';
+// @ts-ignore
+import { Logo } from 'loft-taxi-mui-theme';
 
 interface HeaderProps {
-  onPageChange: (pageId: IPageId) => void;
-  onLogout: () => void;
-  isLoggedIn: boolean;
+  onPageChange: (pageId: PageId) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  onPageChange,
-  onLogout,
-  isLoggedIn
-}) => {
+export const Header = ({ onPageChange }: HeaderProps) => {
   return (
-    <header className="Header">
-      <div className="Header__logo">Loft Taxi</div>
-      <Nav
-        isLoggedIn={isLoggedIn}
-        onLogout={onLogout}
-        onPageChange={onPageChange}
-      />
-    </header>
+    <AppBar color="inherit">
+      <Toolbar>
+        <Grid container alignItems="center" justify="space-between">
+          <Logo />
+          <Nav onPageChange={onPageChange} />
+        </Grid>
+      </Toolbar>
+    </AppBar>
   );
 };

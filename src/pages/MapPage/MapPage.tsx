@@ -1,9 +1,6 @@
 import React from 'react';
+import { MapBox } from '../../components/MapBox/MapBox';
 
-export const MapPage: React.FC = () => {
-  return (
-    <div>
-      <h2>Карта</h2>
-    </div>
-  );
+export const MapPage = () => {
+  return <MapBox />;
 };
