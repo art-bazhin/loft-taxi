@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavLink.css';
+import styles from './NavLink.module.scss';
 
 interface NavLinkProps {
   onClick: () => void;
@@ -8,7 +8,7 @@ interface NavLinkProps {
 
 export const NavLink: React.FC<NavLinkProps> = props => {
   return (
-    <button className="NavLink" onClick={props.onClick}>
+    <button className={styles.NavLink} onClick={props.onClick}>
       {props.text}
     </button>
   );
