@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef, useEffect } from 'react';
 
 // @ts-ignore
 import { Map } from 'mapbox-gl';
