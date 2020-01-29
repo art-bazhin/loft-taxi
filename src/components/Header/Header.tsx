@@ -11,7 +11,7 @@ interface HeaderProps {
 
 export const Header = ({ onPageChange }: HeaderProps) => {
   return (
-    <AppBar color="inherit">
+    <AppBar color="inherit" data-testid="header">
       <Toolbar>
         <Grid container alignItems="center" justify="space-between">
           <Logo />
