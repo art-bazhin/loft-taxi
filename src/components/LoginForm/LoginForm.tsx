@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, FormEvent } from 'react';
 import {
   Button,
   TextField,
@@ -34,40 +34,42 @@ const LoginFormComponent = ({ classes }: StyledComponentProps) => {
 
   const { login } = useContext(AuthContext);
 
+  const handleLogin = (e: FormEvent) => {
+    e.preventDefault();
+    login(email, password) || setError(true);
+  };
+
   return (
     <Card className={classes!.card}>
-      <Typography variant="h4" className={classes!.paddingBottom}>
-        Войти
-      </Typography>
-      <Box className={classes!.paddingBottom}>
-        <TextField
-          className={classes!.input}
-          label="Email"
-          type="email"
-          name="email"
-          onInput={(e: any) => setEmail(e.target.value)}
-        />
-      </Box>
-      <Box className={classes!.paddingBottom}>
-        <TextField
-          className={classes!.input}
-          label="Пароль"
-          type="password"
-          name="password"
-          onInput={(e: any) => setPassword(e.target.value)}
-        />
-      </Box>
-      {error && <div className={classes!.error}>Неверный пароль</div>}
-      <Box textAlign="right">
-        <Button
-          variant="contained"
-          color="primary"
-          type="button"
-          onClick={() => login(email, password) || setError(true)}
-        >
+      <form onSubmit={handleLogin}>
+        <Typography variant="h4" className={classes!.paddingBottom}>
           Войти
-        </Button>
-      </Box>
+        </Typography>
+        <Box className={classes!.paddingBottom}>
+          <TextField
+            className={classes!.input}
+            label="Email"
+            type="email"
+            name="email"
+            onInput={(e: any) => setEmail(e.target.value)}
+          />
+        </Box>
+        <Box className={classes!.paddingBottom}>
+          <TextField
+            className={classes!.input}
+            label="Пароль"
+            type="password"
+            name="password"
+            onInput={(e: any) => setPassword(e.target.value)}
+          />
+        </Box>
+        {error && <div className={classes!.error}>Неверный пароль</div>}
+        <Box textAlign="right">
+          <Button variant="contained" color="primary" type="submit">
+            Войти
+          </Button>
+        </Box>
+      </form>
     </Card>
   );
 };
