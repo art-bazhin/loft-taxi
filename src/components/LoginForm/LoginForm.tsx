@@ -9,7 +9,7 @@ import {
   Typography,
   Box
 } from '@material-ui/core';
-import { AuthContext } from '../../contexts/Auth';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const styles = (theme: Theme) => ({
   error: {
@@ -47,6 +47,7 @@ const LoginFormComponent = ({ classes }: StyledComponentProps) => {
         </Typography>
         <Box className={classes!.paddingBottom}>
           <TextField
+            data-testid="email"
             className={classes!.input}
             label="Email"
             type="email"
@@ -56,6 +57,7 @@ const LoginFormComponent = ({ classes }: StyledComponentProps) => {
         </Box>
         <Box className={classes!.paddingBottom}>
           <TextField
+            data-testid="password"
             className={classes!.input}
             label="Пароль"
             type="password"
@@ -65,7 +67,12 @@ const LoginFormComponent = ({ classes }: StyledComponentProps) => {
         </Box>
         {error && <div className={classes!.error}>Неверный пароль</div>}
         <Box textAlign="right">
-          <Button variant="contained" color="primary" type="submit">
+          <Button
+            data-testid="login"
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Войти
           </Button>
         </Box>

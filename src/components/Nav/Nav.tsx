@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { PageId } from '../../types';
-import { AuthContext } from '../../contexts/Auth';
+import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from '@material-ui/core';
 
 interface NavProps {

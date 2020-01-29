@@ -5,7 +5,7 @@ import { PageId } from './types';
 import { MapPage } from './pages/MapPage/MapPage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { withAuth, AuthContext } from './contexts/Auth';
+import { withAuth, AuthContext } from './contexts/AuthContext';
 
 const App = withAuth(() => {
   const [pageId, setPageId] = useState<PageId>('map');
