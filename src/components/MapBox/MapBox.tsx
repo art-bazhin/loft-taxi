@@ -18,6 +18,8 @@ export const MapBox = () => {
         accessToken:
           'pk.eyJ1IjoiYXJ0LWJhemhpbiIsImEiOiJjazV2ZWVyZ2cwYW1tM2ZydnczeWphb2w5In0.b8wbhgDQKSz_SURarTFXxw'
       });
+
+      mapRef.current.setAttribute('data-testid', 'map');
     }
 
     return () => map && map.remove();
