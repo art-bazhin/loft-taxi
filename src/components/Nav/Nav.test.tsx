@@ -9,7 +9,7 @@ describe('Nav component', () => {
   };
 
   describe('profile button', () => {
-    it('rendered in document', () => {
+    it('is rendered in document', () => {
       const { getByText } = render(<Nav onPageChange={onPageChangeMock} />);
       const profileButton = getByText('Профиль');
 
@@ -26,7 +26,7 @@ describe('Nav component', () => {
   });
 
   describe('map button', () => {
-    it('rendered in document', () => {
+    it('is rendered in document', () => {
       const { getByText } = render(<Nav onPageChange={onPageChangeMock} />);
       const profileButton = getByText('Карта');
 
@@ -43,7 +43,7 @@ describe('Nav component', () => {
   });
 
   describe('logout button', () => {
-    it('rendered in document', () => {
+    it('is rendered in document', () => {
       const { getByText } = render(<Nav onPageChange={onPageChangeMock} />);
       const profileButton = getByText('Выход');
 
