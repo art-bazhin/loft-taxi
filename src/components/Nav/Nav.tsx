@@ -1,19 +1,16 @@
 import React, { useContext } from 'react';
-import { PageId } from '../../types';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
-interface NavProps {
-  onPageChange: (pageId: PageId) => void;
-}
-
-export const Nav = ({ onPageChange }: NavProps) => {
+export const Nav = () => {
+  const history = useHistory();
   const { logout } = useContext(AuthContext);
 
   return (
     <nav>
-      <Button onClick={() => onPageChange('map')}>Карта</Button>
-      <Button onClick={() => onPageChange('profile')}>Профиль</Button>
+      <Button onClick={() => history.push('/map')}>Карта</Button>
+      <Button onClick={() => history.push('/profile')}>Профиль</Button>
       <Button onClick={logout}>Выход</Button>
     </nav>
   );

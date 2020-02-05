@@ -5,17 +5,13 @@ import { Toolbar, AppBar, Grid } from '@material-ui/core';
 // @ts-ignore
 import { Logo } from 'loft-taxi-mui-theme';
 
-interface HeaderProps {
-  onPageChange: (pageId: PageId) => void;
-}
-
-export const Header = ({ onPageChange }: HeaderProps) => {
+export const Header = () => {
   return (
     <AppBar color="inherit" data-testid="header">
       <Toolbar>
         <Grid container alignItems="center" justify="space-between">
           <Logo />
-          <Nav onPageChange={onPageChange} />
+          <Nav />
         </Grid>
       </Toolbar>
     </AppBar>
